@@ -34,17 +34,17 @@
     $(fx.elem).prop('textShadowBlur', fx.now).css({textShadow: '0 0 ' + Math.floor(fx.now) + 'px black'});
   };
   
-	
   $.fn.loadingbar = function(options){
     var settings = $.extend({}, defaults, options),
         el = $(this),
-        href = el.attr("href"),
         target = (el.data("target")) ? el.data("target") : settings.target,
         type = (el.data("type")) ? el.data("type") : settings.type,
         datatype = (el.data("datatype")) ? el.data("datatype") : settings.dataType
-      
+        
     return this.each(function(){
-      el.click(function (){
+
+      $(this).click(function (){
+        href = $(this).attr('href');
         $.ajax({
           type: type,
           url: href,
@@ -85,7 +85,6 @@
                    }, 200);
                   break;
               }
-             
             }
           }
         }).always(function() {
